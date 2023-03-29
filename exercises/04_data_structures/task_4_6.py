@@ -19,6 +19,20 @@ ospf_route. Значения из строки ospf_route надо получи�
 Это не значит, что задание сделано правильно, просто на данном этапе сложно иначе
 проверять результат.
 """
+from string import Template
 
 ospf_route = "      10.0.24.0/24 [110/41] via 10.0.13.3, 3d18h, FastEthernet0/0"
+
+list_ospf=ospf_route.replace('[', '').replace(']', '').replace(',','').split()
+
+template_string = Template('''
+Prefix               $prefix
+AD/Metric            $metric
+Next-Hop             $hop
+Last update          $update
+Outbound Interface   $int''')
+
+prepared_string = template_string.substitute(prefix=list_ospf[0], metric=list_ospf[1], hop=list_ospf[3], update=list_ospf[4],int=list_ospf[5])
+
+print(prepared_string)
 
