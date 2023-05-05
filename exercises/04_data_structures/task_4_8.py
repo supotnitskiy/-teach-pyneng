@@ -26,3 +26,10 @@
 """
 
 ip = "192.168.3.1"
+list_ip=ip.split('.')
+okt1=list_ip[0]
+okt2=list_ip[1]
+okt3=list_ip[2]
+okt4=list_ip[3]
+
+print("%-10s %-10s %-10s %-10s" % (okt1, okt2, okt3, okt4), "%-10s %-10s %-10s %-10s" % ((bin(int(okt1,10)).replace("0b","")),(bin(int(okt2,10)).replace("0b","")),(bin(int(okt3,10)).replace("0b","")),(bin(int(okt4,10)).replace("0b","") )), sep='\n')
