@@ -27,9 +27,19 @@
 
 ip = "192.168.3.1"
 list_ip=ip.split('.')
-okt1=list_ip[0]
-okt2=list_ip[1]
-okt3=list_ip[2]
-okt4=list_ip[3]
+orig1=list_ip[0]
+orig2=list_ip[1]
+orig3=list_ip[2]
+orig4=list_ip[3]
 
-print("%-10s %-10s %-10s %-10s" % (okt1, okt2, okt3, okt4), "%-10s %-10s %-10s %-10s" % ((bin(int(okt1,10)).replace("0b","")),(bin(int(okt2,10)).replace("0b","")),(bin(int(okt3,10)).replace("0b","")),(bin(int(okt4,10)).replace("0b","") )), sep='\n')
+okt1=((bin(int(list_ip[0],10)).replace("0b","")))
+okt2=((bin(int(list_ip[1],10)).replace("0b","")))
+okt3=((bin(int(list_ip[2],10)).replace("0b","")))
+okt4=((bin(int(list_ip[3],10)).replace("0b","")))
+
+message=(
+        f"{orig1:8}  {orig2:8}  {orig3:8}  {orig4:8}\n"
+        f"{okt1:0>8}  {okt2:0>8}  {okt3:0>8}  {okt4:0>8}"
+        )
+
+print(message)
