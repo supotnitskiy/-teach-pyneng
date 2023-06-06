@@ -50,3 +50,14 @@ london_co = {
         "routing": True,
     },
 }
+
+name = input('Введите имя устройства: ')
+
+skobki=["(",")"]
+options=list(london_co.get(name).keys())
+vivod=(",".join(options).join(skobki))
+
+parametr = input('Введите имя параметра: ' + vivod +':')
+
+
+print(london_co.get(name).get(parametr))
