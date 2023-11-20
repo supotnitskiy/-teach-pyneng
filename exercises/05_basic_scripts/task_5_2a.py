@@ -49,3 +49,49 @@ bin_ip = "00001010000000010000000111000011"
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
 """
+
+network = input("Введите ip адрес - ")
+
+net_split=network.replace("."," ").replace("/"," ").split()
+
+okt1, okt2, okt3, okt4 = [ int(net_split[0]), int(net_split[1]), int(net_split[2]), int(net_split[3]) ]
+
+mask = int(net_split[4])
+
+binarn_mask = "1" * mask + "0" * (32 - mask)
+bin_ip_str = "{:08b}{:08b}{:08b}{:08b}".format(okt1, okt2, okt3, okt4)
+bin_network_str = bin_ip_str[:mask] + "0" * (32 - mask)
+
+m1, m2, m3, m4 = [
+int(bin_network_str[0:8], 2),
+int(bin_network_str[8:16], 2),
+int(bin_network_str[16:24], 2),
+int(bin_network_str[24:32], 2),
+]
+
+bm1, bm2, bm3, bm4 = [
+int(binarn_mask[0:8], 2),
+int(binarn_mask[8:16], 2),
+int(binarn_mask[16:24], 2),
+int(binarn_mask[24:32], 2),
+]
+ip_mask="""
+Network:
+{0:<8}  {1:<8}  {2:<8}  {3:<8}
+{0:08b}  {1:08b}  {2:08b}  {3:08b}
+"""
+
+
+ip_network="""
+Mask:
+/{4}
+{0:<8}  {1:<8}  {2:<8}  {3:<8}
+{0:08b}  {1:08b}  {2:08b}  {3:08b}
+"""
+
+
+
+
+print(ip_mask.format(m1, m2, m3, m4))
+print(ip_network.format(bm1, bm2, bm3, bm4, mask))
+
